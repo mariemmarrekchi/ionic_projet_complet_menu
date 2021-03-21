@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+import { AuthentificationService } from './services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -45,10 +47,10 @@ export class AppComponent implements OnInit {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor(
+  constructor(private router:Router,private render:Renderer2,
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,private serviceAuth:AuthentificationService
   ) {
     this.initializeApp();
   }
@@ -57,9 +59,25 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.login();
     });
+    
   }
-
+  login() {
+    if(this.serviceAuth.getConnecte()!="oui"){
+    this.router.navigateByUrl('/authentification')}
+    else{
+      this.router.navigateByUrl('menu/home')
+    }
+  }
+  changeThemeToDark(event){
+    console.log(event.detail.checked);
+    if(event.detail.checked){
+      this.render.setAttribute(document.body,'color-theme','dark');
+    }else{
+      this.render.setAttribute(document.body,'color-theme','light');
+    }
+  }
   ngOnInit() {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {

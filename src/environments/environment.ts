@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiKey:'370335aec7bb5360d8c08f348cc2971b',
+url:'http://api.openweathermap.org/data/2.5/weather?q='
+,
+ firebaseConfig :{
+  apiKey: "AIzaSyBkpv3ZO6aPjbz3hBkXLPeUHPBdRrCvThM",
+  authDomain: "ionic-db2b8.firebaseapp.com",
+  projectId: "ionic-db2b8",
+  storageBucket: "ionic-db2b8.appspot.com",
+  messagingSenderId: "482417024489",
+  appId: "1:482417024489:web:74158ba58793e5995bff78",
+  measurementId: "G-1Q3ZJPF464"
+},
 };
 
 /*

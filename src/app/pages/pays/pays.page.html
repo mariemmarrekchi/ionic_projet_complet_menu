@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+   <ion-menu-button  color="primary" slot="start"></ion-menu-button>
+    <ion-title>pays</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card>
+ <ion-card-content>
+ <ion-item size="6">
+ <ion-label>Pays</ion-label>
+ <ion-input shape="round" type="=text" [(ngModel)]="pays"></ion-input>
+ <ion-button  shape="round"(click)="PaysInfo()">OK</ion-button>
+ </ion-item>
+ </ion-card-content>
+ </ion-card>
+
+
+<ion-card>
+<ion-card-content *ngIf="paysaffiche">
+ <ion-item  >
+
+<img src="{{paysaffiche[0].flag}}"/>
+</ion-item>
+
+
+<ion-item color="light" class="text-color:light">
+<b>{{paysaffiche[0].name}}</b>
+</ion-item>
+
+<ion-item>
+{{paysaffiche[0].translations.fa}}
+</ion-item>
+
+
+
+
+</ion-card-content>
+</ion-card>
+<div *ngIf="paysaffiche"> 
+<ion-item color="primary">
+<b>Administration</b>
+</ion-item>
+
+<ion-item>
+<b>Capitale</b> : <span style="margin-left:150px">{{paysaffiche[0].capital}} </span>
+</ion-item>
+
+<ion-item>
+<b>language(s)</b> : <span style="margin-left:100px">{{paysaffiche[0].languages[0].name}} -{{paysaffiche[0].languages[0].nativeName}}</span>
+</ion-item>
+
+<ion-item color="primary">
+<b>Géographique</b>
+</ion-item>
+
+<ion-item>
+<b>Région</b> : <span style="margin-left:150px">{{paysaffiche[0].region}} </span>
+</ion-item>
+
+<ion-item>
+<b>superficie</b> : <span style="margin-left:100px">{{paysaffiche[0].area}}km2</span>
+</ion-item>
+
+<ion-item>
+<b>Fuseau Horraire</b> : <span style="margin-left:80px">{{paysaffiche[0].timezones[0]}}</span>
+</ion-item>
+
+
+<ion-item color="primary">
+<b>Démographie</b>
+</ion-item>
+<ion-item>
+<b>Population </b> : <span style="margin-left:150px">{{paysaffiche[0].population}}</span>
+</ion-item>
+</div>
+</ion-content>
